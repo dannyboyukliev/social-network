@@ -1,0 +1,79 @@
+<div class="container">
+
+    <div class="col-md-5">
+        <div class="well bs-component">
+            <form class="form-horizontal">
+                <fieldset>
+                    <legend>Sign in</legend>
+                    <md-input-container>
+                        <label for="username" class="col-lg-2 control-label">Username</label>
+                        <input type="text" ng-model="loginData.username">
+                    </md-input-container>
+
+                    <md-input-container>
+                        <label for="password" class="col-lg-2 control-label">Password</label>
+                        <input type="password" ng-model="loginData.password">
+                    </md-input-container>
+                    <div class="form-group">
+                        <div class="col-lg-10 col-lg-offset-8">
+                            <md-button class="md-raised md-primary md-button md-default-theme" ng-click="login(loginData)" ng-transclude>Login</md-button>
+                        </div>
+                    </div>
+                </fieldset>
+            </form>
+        </div>
+    </div>
+
+    <div class="col-md-7">
+        <div class="well bs-component">
+            <form class="form-horizontal">
+                <fieldset>
+                    <legend>Sign up</legend>
+                    <md-input-container>
+                        <label for="username" class="col-lg-2 control-label">Username</label>
+                         <input type="text" ng-model="registerData.username">
+                    </md-input-container>
+
+                    <md-input-container>
+                        <label for="username" class="col-lg-2 control-label">Password</label>
+                         <input type="password" ng-model="registerData.password">
+                    </md-input-container>
+
+                    <md-input-container>
+                        <label for="username" class="col-lg-2 control-label">Confirm password</label>
+                         <input type="password" ng-model="registerData.confirmedPassword">
+                    </md-input-container>
+
+
+                    <md-input-container>
+                        <label for="username" class="col-lg-2 control-label">Name</label>
+                         <input type="text" ng-model="registerData.fullName">
+                    </md-input-container>
+
+                    <md-input-container>
+                        <label for="username" class="col-lg-2 control-label">Email</label>
+                         <input type="text" ng-model="registerData.email">
+                    </md-input-container>
+
+                    <md-radio-group>
+                        <div class="col-lg-10">
+                            <md-radio-button ng-model="registerData.gender" ng-value="1" aria-label="Male">
+                                Male
+                            </md-radio-button>
+                            
+                            <md-radio-button ng-model="registerData.gender" ng-value="0" aria-label="Female">
+                                Female
+                            </md-radio-button>
+                        </div>
+                    </md-radio-group>
+
+                    <div class="form-group">
+                        <div class="col-lg-10 col-lg-offset-8">
+                            <md-button class="md-raised md-primary md-button md-default-theme" ng-click="register(registerData)" ng-transclude>Register</md-button>
+                        </div>
+                    </div>
+                </fieldset>
+            </form>
+        </div>
+    </div>
+</div>
