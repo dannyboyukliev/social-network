@@ -3,7 +3,8 @@ var socialNetworkApp = angular.module('socialNetworkApp', [
 	'ngRoute',
 	'ngMaterial',
 	'userControllers',
-	'toolbarControllers'
+	'toolbarControllers',
+	'EditProfileController'
 ]);
 
 socialNetworkApp.constant('baseUrl', 'http://softuni-social-network.azurewebsites.net');
@@ -13,8 +14,9 @@ socialNetworkApp.config(['$routeProvider', function ($routeProvider) {
 		templateUrl: 'templates/welcome-screen.html',
 		controller: 'userController'
 	})
-	.when('/settings/', {
-		templateUrl:'templates/settings.html'
+	.when('/settings', {
+		templateUrl:'templates/settings.html',
+		controller: "editProfileController"
 	})
 }]);
 

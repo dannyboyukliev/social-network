@@ -6,6 +6,7 @@
     <link rel="stylesheet" href="css/bootstrap.css">
     <link rel="stylesheet" href="https://ajax.googleapis.com/ajax/libs/angular_material/0.8.3/angular-material.min.css">
     <link rel="stylesheet" href="css/app.css">
+
 	<script src="lib/angular/angular.js"></script>
 	<script src="lib/angular/angular-route.js"></script>
 	<script src="lib/angular/angular-sanitize.js"></script>
@@ -15,28 +16,31 @@
 	<script src="js/app.js"></script>
 	<script src="js/controllers/toolbarControllers.js"></script>
 	<script src="js/controllers/userControllers.js"></script>
+    <script src="js/controllers/editProfileController.js"></script>
 </head>
 <body ng-app="socialNetworkApp">
-	<md-toolbar layout="row" layout-align="space-between center" ng-controller="toolbarController">
-      	<span>
-      		<div class="md-toolbar-tools">
-	      		<span>Social Network</span>
-	      		<!-- fill up the space between left and right area -->
-	     		<span flex></span>
-    		</div>
-    	</span>
+    <div layout="column" layout-fill size="100%">
+    	<md-toolbar layout="row" layout-align="space-between center" ng-controller="toolbarController" md-scroll-shrink>
+          	<span>
+          		<div class="md-toolbar-tools">
+    	      		<span>Social Network</span>
+    	      		<!-- fill up the space between left and right area -->
+    	     		<span flex></span>
+        		</div>
+        	</span>
 
-    	<span>
-        	<md-button class="md-icon-button" aria-label="Home" ng-click="go('/')"><md-icon md-svg-icon="img/home.svg"></md-icon></md-button>
-        	<md-button class="md-icon-button" aria-label="Friends" ng-click="go('friends/')"><md-icon md-svg-icon="img/toolbar-icons/friends-list.svg"></md-icon></md-button>
-        	<md-button class="md-icon-button" aria-label="Settings" ng-click="go('settings/')"><md-icon md-svg-icon="img/toolbar-icons/settings.svg"></md-icon></md-button>
-        	<md-button class="md-icon-button" aria-label="Change password" ng-click="go('changePass/')"><md-icon md-svg-icon="img/toolbar-icons/key.svg"></md-icon></md-button>
-        	<md-button class="md-icon-button" aria-label="Logout" ng-click="go('logout/')"><md-icon md-svg-icon="img/toolbar-icons/logout.svg"></md-icon></md-button>
-        </span>
-    </md-toolbar>
+        	<span>
+            	<md-button class="md-icon-button" aria-label="Home" ng-click="go('/')"><md-icon md-svg-icon="img/home.svg"></md-icon></md-button>
+            	<md-button class="md-icon-button" aria-label="Friends" ng-click="go('friends/')"><md-icon md-svg-icon="img/toolbar-icons/friends-list.svg"></md-icon></md-button>
+            	<md-button class="md-icon-button" aria-label="Settings" ng-click="go('settings/')"><md-icon md-svg-icon="img/toolbar-icons/settings.svg"></md-icon></md-button>
+            	<md-button class="md-icon-button" aria-label="Change password" ng-click="go('changePass/')"><md-icon md-svg-icon="img/toolbar-icons/key.svg"></md-icon></md-button>
+            	<md-button class="md-icon-button" aria-label="Logout" ng-click="go('logout/')"><md-icon md-svg-icon="img/toolbar-icons/logout.svg"></md-icon></md-button>
+            </span>
+        </md-toolbar>
 
-	<md-content>
-		<div ng-view></div>
-	</md-content>
+    	<md-content>
+    		<div ng-view></div>
+    	</md-content>
+    </div>
 </body>
 </html>

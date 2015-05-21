@@ -1,24 +1,23 @@
-</div>
-<link href="../styles/edit-style.css" rel="stylesheet" />
 <div class="container col-xs-11" ng-cloak="">
-    <div ng-include src="'../views/header.html'"></div>
-    <div class="viewTitle col-xs-12">
-        <h2>Edit Profile</h2>
-    </div>
-    <form class="col-xs-10 col-centered clearfix" ng-submit="saveChanges()">
+    <form class="col-xs-10 col-centered clearfix">
         <div id="image" class="col-md-4 col-xs-12 clearfix">
-            <div class="profile-image col-lg-12" ng-if="profilImage">
-                <img ng-src="{{ profileImageData }}" />
+            <div class="profile-image col-lg-12" ng-if="profileImage">
+                <img ng-src="{{ profileImageData }}">
             </div>
-            <div class="profile-image col-xs-12" ng-if="!profilImage">
-                <img src="../images/no-image.png"/>
+            <div class="profile-image col-xs-12" ng-if="!profileImage">
+                <img style="background: black" ng-src="../img/home.png"/>    
             </div>
             <div class="caption">
-                <p>Allowed format: .jpg</p>
+                <p>Allowed formats: .jpg</p>
                 <p>Limit: 128kb</p>
             </div>
-            <input onchange="angular.element(this).scope().uploadProfileImage(this)" type="file" id="select-profile-image" accept="image/jpg" />
-            <button ng-click="clickUploadProfileImage()" type="button" id="upload-profile-image">Upload</button>
+            <md-input-container>
+                <md-button>
+                    Select image
+                    <input onchange="angular.element(this).scope().uploadNewProfilePicture(this)" type="file" id="select-profile-image" accept="image/jpg">
+                </md-button>
+            </md-input-container>
+            <md-button class="md-raised md-primary md-button md-default-theme" ng-transclude ng-click="clickUploadNewProfilePicture()" type="button" id="upload-profile_image">Upload</button>
         </div>
         <div id="other-info" class="col-md-7 col-xs-12">
             <label for="editName" class="col-md-4 col-xs-12">Name</label>
@@ -34,9 +33,15 @@
                 <input value="other" ng-checked="other" name="registerGender" type="radio" ng-model="gender" /> Other
             </div>
 
-            <input onchange="angular.element(this).scope().uploadBackgroundImage(this)" type="file" id="select-bg-image" />
+            <md-input-container>
+                <md-button>
+                    Select image
+                        <input onchange="angular.element(this).scope().uploadBackgroundImage(this)" type="file" id="select-bg-image" />
+                </md-button>
+            </md-input-container>
+
             <div class="upload clearfix col-sm-4 col-xs-12">
-                <button ng-click="clickUploadBackgroundImage()" type="button">Upload</button>
+                <md-button class="md-raised md-primary md-button md-default-theme" ng-transclude ng-click="clickUploadBackgroundImage()" type="button">Upload</button>
                 <p class="caption">Limit: 1024kb</p>
             </div>
             <div class="background-image col-sm-8 col-xs-12" ng-if="coverImage">
@@ -45,7 +50,9 @@
             <div class="background-image col-sm-8 col-xs-12" ng-if="!coverImage">
                 <img src="../images/no-bg-image.jpg"/>
             </div>
+
         </div>
-        <input type="submit" id="save-changes" value="Save Changes" />
+
+        <md-button class="md-raised md-primary md-button md-default-theme" ng-click="login(loginData)" ng-transclude>Save changes</md-button>
     </form>
 </div>
