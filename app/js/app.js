@@ -2,12 +2,13 @@ var socialNetworkApp = angular.module('socialNetworkApp', [
 	'ngSanitize',
 	'ngRoute',
 	'ngMaterial',
+	'cgNotify',
 	'userControllers',
 	'toolbarControllers',
 	'EditProfileController'
 ]);
 
-socialNetworkApp.constant('baseUrl', 'http://softuni-social-network.azurewebsites.net');
+socialNetworkApp.constant('BASE_SERVICE_URL', 'http://softuni-social-network.azurewebsites.net/api');
 
 socialNetworkApp.config(['$routeProvider', function ($routeProvider) {
 	$routeProvider.when('/', {
