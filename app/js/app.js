@@ -19,6 +19,9 @@ socialNetworkApp.config(['$routeProvider', function ($routeProvider) {
 		templateUrl:'templates/settings.html',
 		controller: "editProfileController"
 	})
+	.when('/home', {
+		templateUrl: 'templates/news-feed.html'
+	})
 }]);
 
 /* Config theme. */

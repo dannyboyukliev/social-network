@@ -30,12 +30,12 @@
           	<span>
           		<div class="md-toolbar-tools">
     	      		<span>Social Network</span>
-    	      		<!-- fill up the space between left and right area -->
+    	      		<!-- fills the space between left and right area -->
     	     		<span flex></span>
         		</div>
         	</span>
 
-        	<span>
+        	<span ng-if="isLogged">
             	<md-button class="md-icon-button" aria-label="Home" ng-click="go('/')"><md-icon md-svg-icon="img/home.svg"></md-icon></md-button>
             	<md-button class="md-icon-button" aria-label="Friends" ng-click="go('friends/')"><md-icon md-svg-icon="img/toolbar-icons/friends-list.svg"></md-icon></md-button>
             	<md-button class="md-icon-button" aria-label="Settings" ng-click="go('settings/')"><md-icon md-svg-icon="img/toolbar-icons/settings.svg"></md-icon></md-button>

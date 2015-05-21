@@ -1,7 +1,9 @@
 var userControllers = angular.module('userControllers', []);
 
-userControllers.controller('userController', ['$scope', '$http', 'authentication', 'notify',
-	function ($scope, $http, authentication, notify) {
+userControllers.controller('userController', ['$scope', '$http', '$location', 'authentication', 'notify',
+	function ($scope, $http, $location, authentication, notify) {
+		$scope.isLogged = false;
+
 		$scope.loginData = {
 			username: '',
 			password: ''
@@ -105,12 +107,18 @@ userControllers.controller('userController', ['$scope', '$http', 'authentication
 
 		/* After login data has been validated. */
 		function makeLoginQuery (loginData) {;
-			authentication.Login($scope.loginData, 
+			authentication.login($scope.loginData, 
 				function (data) {
+					authentication.setUserData(data);
+
 					notify({ 
 						message: 'Logged in. Redirecting to news feed',
 						classes: 'alert-success'
 					});
+
+					authentication.setUserData(data);
+
+					$location.path('/home');
 					clearAllLoginFields();
 				}, function (error) {
 					notify({ 
@@ -123,12 +131,17 @@ userControllers.controller('userController', ['$scope', '$http', 'authentication
 
 		/* Register data is validated and is ready to be send to the server. */
 		function makeRegisterQuery (registerData) {
-			authentication.Register($scope.registerData, 
+			authentication.setUserData(data);
+
+			authentication.register($scope.registerData, 
 				function (data) {
 					notify({ 
 						message: 'Registered. Redirecting to the news feed',
 						classes: 'alert-success'
 					});
+
+					authentication.setUserData(data);
+					$location.path('/home');
 					clearAllRegisterFields();
 				}, function (error) {
 					notify({ 
