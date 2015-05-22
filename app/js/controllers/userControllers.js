@@ -18,7 +18,8 @@ userControllers.controller('userController', ['$scope', '$http', '$location', 'a
 		}
 
 		$scope.login = function (loginData) {
-
+			$scope.isLogged = true;
+			
 			var isLoginDataValid = true;
 
 			if (loginData.username === '') {
@@ -117,7 +118,8 @@ userControllers.controller('userController', ['$scope', '$http', '$location', 'a
 					});
 
 					authentication.setUserData(data);
-
+					console.log("Is Logged");
+					$scope.isLogged = true;
 					$location.path('/home');
 					clearAllLoginFields();
 				}, function (error) {
@@ -139,7 +141,7 @@ userControllers.controller('userController', ['$scope', '$http', '$location', 'a
 						message: 'Registered. Redirecting to the news feed',
 						classes: 'alert-success'
 					});
-
+					$scope.isLogged = true;
 					authentication.setUserData(data);
 					$location.path('/home');
 					clearAllRegisterFields();

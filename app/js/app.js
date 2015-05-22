@@ -5,7 +5,8 @@ var socialNetworkApp = angular.module('socialNetworkApp', [
 	'cgNotify',
 	'userControllers',
 	'toolbarControllers',
-	'EditProfileController'
+	'EditProfileController',
+	'newsFeedControllers'
 ]);
 
 socialNetworkApp.constant('BASE_SERVICE_URL', 'http://softuni-social-network.azurewebsites.net/api');
@@ -20,7 +21,8 @@ socialNetworkApp.config(['$routeProvider', function ($routeProvider) {
 		controller: "editProfileController"
 	})
 	.when('/home', {
-		templateUrl: 'templates/news-feed.html'
+		templateUrl: 'templates/news-feed.html',
+		controller: "newsFeedController"
 	})
 }]);
 
