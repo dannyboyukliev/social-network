@@ -19,6 +19,7 @@
     <script src="js/app.js"></script>
 
     <script src="js/services/authentication.js"></script>
+    <script src="js/services/social.js"></script>
 
 	<script src="js/controllers/toolbarControllers.js"></script>
 	<script src="js/controllers/userControllers.js"></script>
@@ -36,7 +37,7 @@
         		</div>
         	</span>
 
-        	<span ng-show="isLogged">
+        	<span>
             	<md-button class="md-icon-button" aria-label="Home" ng-click="go('/')"><md-icon md-svg-icon="img/home.svg"></md-icon></md-button>
             	<md-button class="md-icon-button" aria-label="Friends" ng-click="go('friends/')"><md-icon md-svg-icon="img/toolbar-icons/friends-list.svg"></md-icon></md-button>
             	<md-button class="md-icon-button" aria-label="Settings" ng-click="go('settings/')"><md-icon md-svg-icon="img/toolbar-icons/settings.svg"></md-icon></md-button>

@@ -110,14 +110,13 @@ userControllers.controller('userController', ['$scope', '$http', '$location', 'a
 		function makeLoginQuery (loginData) {;
 			authentication.login($scope.loginData, 
 				function (data) {
-					authentication.setUserData(data);
 
 					notify({ 
 						message: 'Logged in. Redirecting to news feed',
 						classes: 'alert-success'
 					});
 
-					authentication.setUserData(data);
+					authentication.setCredentials(data);
 					console.log("Is Logged");
 					$scope.isLogged = true;
 					$location.path('/home');
@@ -133,7 +132,6 @@ userControllers.controller('userController', ['$scope', '$http', '$location', 'a
 
 		/* Register data is validated and is ready to be send to the server. */
 		function makeRegisterQuery (registerData) {
-			authentication.setUserData(data);
 
 			authentication.register($scope.registerData, 
 				function (data) {
@@ -142,7 +140,7 @@ userControllers.controller('userController', ['$scope', '$http', '$location', 'a
 						classes: 'alert-success'
 					});
 					$scope.isLogged = true;
-					authentication.setUserData(data);
+					authentication.setCredentials(data);
 					$location.path('/home');
 					clearAllRegisterFields();
 				}, function (error) {

@@ -1,10 +1,21 @@
 var newsFeedControllers = angular.module('newsFeedControllers', []);
 
-newsFeedControllers.controller('newsFeedController', ['$scope', '$location',
-	function ($scope, $location) {
-		console.log('News feed');
+newsFeedControllers.controller('newsFeedController', ['$scope', 'social', 'notify',
+	function ($scope, social, notify) {
+		$scope.getNewsFeed = function () {
+			return social.getNewsFeed()
+				.then(function (data) {
+					$scope.newsFeedPosts = result.data;
+				}, function (error) {
+					notify({ 
+						message: error.data["message"],
+						classes: 'alert-danger'
+					});
+				});
+		}
 
-		$scope.isLogged = false;
+		//Execute now.
+		$scope.getNewsFeed();
 
 	}
 ]);
