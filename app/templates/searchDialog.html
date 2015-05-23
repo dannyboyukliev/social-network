@@ -1,4 +1,4 @@
-<md-dialog aria-label="Mango (Fruit)">
+<md-dialog aria-label="Search">
   <form>
   <md-dialog-content class="sticky-container">
     <md-subheader class="md-sticky-no-effect">Search for a user</md-subheader>
@@ -17,6 +17,16 @@
     <md-button class="md-primary" aria-label="Search" ng-click="executeSearch()">Search<md-icon md-svg-icon="img/toolbar-icons/search.svg" style="color:black;"></md-icon></md-button>
   </div>
   <span flex></span>
-  <md-list-item ng-repeat="result in searchResults"><p>{{result.name}} ({{result.username}})</p></md-list-item>
   </form>
+  <md-content>
+  <md-list>
+    <md-list-item ng-repeat="result in searchResults" >
+          <div layout="row">
+            <p>{{result.name}} ({{result.username}})</p>
+            <span flex></span>
+            <md-icon md-svg-icon="img/search-icons/add-as-friend.svg" ng-click="sendFriendRequest(result.username)" aria-label="Add as friend" class="md-secondary md-hue-3"></md-icon>
+          </div>
+          <md-divider></md-divider>
+    </md-list-item>
+  </md-list></md-content>
 </md-dialog>

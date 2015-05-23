@@ -9,7 +9,8 @@ var socialNetworkApp = angular.module('socialNetworkApp', [
 	'EditProfileController',
 	'newsFeedControllers',
 	'logoutControllerModule',
-	'SearchDialogController'
+	'SearchDialogController',
+	'FriendsControllers'
 ]);
 
 socialNetworkApp.constant('BASE_SERVICE_URL', 'http://softuni-social-network.azurewebsites.net/api');
@@ -30,6 +31,10 @@ socialNetworkApp.config(['$routeProvider', function ($routeProvider) {
 	.when('/settings', {
 		templateUrl:'templates/edit-profile.html',
 		controller: 'editProfileController'
+	})
+	.when('/friends', {
+		templateUrl: 'templates/friends.html',
+		controller: 'friendsController'
 	})
 	.when('/logout', {
 		template: ' ',

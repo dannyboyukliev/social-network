@@ -1,0 +1,21 @@
+<md-dialog aria-label="Friends requests">
+  <form>
+  <md-dialog-content class="sticky-container">
+    <md-subheader class="md-sticky-no-effect">You have {{countFriendRequests}} friend requests.</md-subheader>
+  </md-dialog-content>
+  <span flex></span>
+  </form>
+  <md-content>
+  <md-list>
+    <md-list-item ng-repeat="result in requestsResults" >
+          <div layout="row">
+            <p>{{result.user.name}} ({{result.user.username}})</p>
+            <span layout="row">
+            <md-button class="md-icon-button" aria-label="Friends" ng-click="acceptFriendRequest(result)"><md-icon md-svg-icon="img/plus.svg" aria-label="Add as friend" class="md-secondary md-hue-3"></md-icon></md-button>
+            <md-button class="md-icon-button" aria-label="Friends" ng-click="ignoreFriendRequest(result)"><md-icon md-svg-icon="img/minus.svg" aria-label="Ignore friend request" class="md-secondary md-hue-3"></md-icon></md-button>
+            </span>
+          </div>
+          <md-divider></md-divider>
+    </md-list-item>
+  </md-list></md-content>
+</md-dialog>

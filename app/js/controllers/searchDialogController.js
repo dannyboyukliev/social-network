@@ -21,5 +21,17 @@ SearchDialogController.controller('searchDialogController', ['$scope', '$mdDialo
 					});
 				});
   		}
+
+  		$scope.sendFriendRequest = function (username) {
+  			social.sendFriendRequest(username)
+  				.then(function (resultData) {
+  					notify({ message: "Successfully send friend request." })
+  				}, function (error) {
+  					notify({ 
+						message: error.data['message'],
+						classes: 'alert-danger'
+					});
+  				})
+  		}
 	}
 ]);
