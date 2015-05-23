@@ -4,6 +4,24 @@
             News Feed <span id="news-feed-icon" class="fa fa-comments"></span>
         </h2>
     </div>
+    <div class="col-md-5">
+        <div class="well bs-component">
+            <form class="form-horizontal">
+                <fieldset>
+                    <md-input-container>
+                        <label for="post" class="col-lg-2 control-label">Say something...</label>
+                        <input type="text" ng-model="postedText">
+                    </md-input-container>
+                    <div class="form-group">
+                        <div class="col-lg-10 col-lg-offset-8">
+                            <md-button class="md-raised md-primary md-button md-default-theme" ng-click="post(postedText)" ng-transclude>Post</md-button>
+                        </div>
+                    </div>
+                </fieldset>
+            </form>
+        </div>
+    </div>
+
     <div id="news-feed" class="col-lg-8 col-sm-7 col-xs-12">
         <ul id="news-feed-posts" class="col-lg-8 col-md-10 col-xs-12">
             <li class="col-xs-12 news-feed-post" ng-repeat="post in newsFeedPosts">
@@ -25,13 +43,13 @@
                     </div>
                     <div class="post-buttons">
                         <div class="button-group">
-                            <span ng-if="!post.liked">{{ post.likesCount }} <img src="../images/like_icon.png" /></span>
+                            <span ng-if="!post.liked">{{ post.likesCount }} <md-icon md-svg-icon="../img/like.svg" /></span>
                             <span ng-click="likePost(post.id)" ng-if="!post.liked" class="like-unlike">Like</span>
-                            <span ng-if="post.liked">{{ post.likesCount }} <img src="../images/unlike_icon.png" /></span>
+                            <span ng-if="post.liked">{{ post.likesCount }} <md-icon md-svg-icon="../img/unlike.svg" /></span>
                             <span ng-click="unlikePost(post.id)" ng-if="post.liked" class="like-unlike">Unlike</span>
                         </div>
                         <div class="button-group">
-                            <span>{{ post.comments.length }} <img src="../images/comment-balloon.jpg" /></span>
+                            <span>{{ post.comments.length }} <md-icon md-svg-icon="../img/comment-baloon.svg" /></span>
                         </div>
                         <div class="button-group">
                             <span ng-click="show ? show=!show : show=true" class="comment">Comment</span>
@@ -56,9 +74,9 @@
                                     <p>{{ comment.commentContent }}</p>
                                 </div>
                                 <div class="comment-buttons">
-                                    <span class="like-comment" ng-if="!comment.liked">{{ comment.likesCount }} <img src="../images/like_icon.png" /></span>
+                                    <span class="like-comment" ng-if="!comment.liked">{{ comment.likesCount }} <md-icon md-svg-icon="../img/like.svg" /></span>
                                     <span ng-click="likePostComment(post.id, comment.id)" ng-if="!comment.liked" class="like-unlike-comment">Like</span>
-                                    <span class="like-comment" ng-if="comment.liked">{{ comment.likesCount }} <img src="../images/unlike_icon.png" /></span>
+                                    <span class="like-comment" ng-if="comment.liked">{{ comment.likesCount }} <md-icon md-svg-icon="../img/unlike.svg" /></span>
                                     <span ng-click="unlikePostComment(post.id, comment.id)" ng-if="comment.liked" class="like-unlike-comment">Unlike</span>
                                 </div>
                             </div>

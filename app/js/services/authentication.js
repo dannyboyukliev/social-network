@@ -42,6 +42,10 @@ socialNetworkApp.factory('authentication', function ($http, BASE_SERVICE_URL) {
         return localStorage['isAdmin'];
     };
 
+    service.getUsername = function () {
+        return localStorage['username'];
+    }
+
     service.setCredentials = function (serverData) {
         localStorage['accessToken'] = serverData.access_token;
         localStorage['username'] = serverData.userName;
@@ -49,7 +53,7 @@ socialNetworkApp.factory('authentication', function ($http, BASE_SERVICE_URL) {
     };
 
     service.changePassword = function (passwordData, success, error) {
-        $http.put(BASE_SERVICE_URL + '/ChangePassword', passwordData, {headers: this.GetHeaders()})
+        $http.put(BASE_SERVICE_URL + '/ChangePassword', passwordData, {headers: this.getHeaders()})
             .success(function (data, status, headers, config) {
                 success()
             }).error(error);

@@ -40,6 +40,10 @@ socialNetworkApp.config(['$routeProvider', function ($routeProvider) {
 		template: ' ',
 		controller: 'logoutController'
 	})
+	.when('/changePass', {
+		templateUrl: 'templates/changePassword.html', 
+		controller: 'changePasswordController'
+	})
 }]);
 
 /* Config theme. */

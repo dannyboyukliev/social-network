@@ -174,3 +174,22 @@ AuthControllers.controller('authController', ['$scope', '$http', '$location', 'a
 		}
 	}
 ]);
+
+AuthControllers.controller('changePasswordController', ['$scope', 'social', 'notify',
+	function ($scope, social, notify) {
+		$scope.changePassword = function (changePasswordData) {
+			social.changePassword(changePasswordData, 
+				function (data) {
+					notify({ 
+						message: 'Password changed',
+						classes: 'alert-success'
+					});
+				}, function (error) {
+					notify({ 
+						message: error,
+						classes: 'alert-danger'
+					});
+				});
+		}
+	}
+]);

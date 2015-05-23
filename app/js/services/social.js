@@ -6,7 +6,8 @@ socialNetworkApp.factory('social', function ($http, BASE_SERVICE_URL, authentica
 	}
 
 	service.changePassword = function (credentials) {
-		return $http.put(BASE_SERVICE_URL + '/me/changepassword', credentials, authentication)
+        console.log(credentials);
+		return $http.put(BASE_SERVICE_URL + '/me/changepassword', credentials, authentication.getHeaders());
 	}	
 
 	service.editProfile = function (user) {
@@ -44,6 +45,10 @@ socialNetworkApp.factory('social', function ($http, BASE_SERVICE_URL, authentica
     service.getNewsFeed = function() {
     	console.log(authentication.getHeaders());
         return $http.get(BASE_SERVICE_URL + "/me/feed?StartPostId=&PageSize=5", authentication.getHeaders());
+    }
+
+    service.addNewPost = function(postText) {
+        return $http.post(BASE_SERVICE_URL + "/Posts", { postContent: postText, username: authentication.getUsername() }, authentication.getHeaders());
     }
 
     service.likePost = function(postId) {

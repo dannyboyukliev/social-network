@@ -31,6 +31,19 @@ newsFeedControllers.controller('newsFeedController', ['$scope', 'social', 'notif
 				})
 		}
 
+		$scope.post = function (postedText) {
+			return social.addNewPost(postedText) 
+				.then(function (resultData) {
+					console.log(resultData);
+				}, function (error) {
+					notify({ 
+						message: error.data['message'],
+						classes: 'alert-danger'
+					});
+				});
+			
+		}
+
 		$scope.getOwnFriendsPreview();
 	}
 ]);
