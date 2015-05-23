@@ -16,9 +16,18 @@ socialNetworkApp.factory('authentication', function ($http, BASE_SERVICE_URL) {
 			}).error(error);
 	}
 
+    service.logout = function (success, error) {
+        $http.post(BASE_SERVICE_URL + '/users/logout', null, service.getHeaders())
+            .success(function (data) {
+                success(data);
+            }).error(error);
+    }
+
 	service.getHeaders = function() {
         return {
-            Authorization: "Bearer " + localStorage['accessToken']
+            headers: {
+                'Authorization': "Bearer " + localStorage['accessToken']
+            }
         };
     };
 

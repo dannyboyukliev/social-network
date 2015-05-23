@@ -3,26 +3,36 @@ var socialNetworkApp = angular.module('socialNetworkApp', [
 	'ngRoute',
 	'ngMaterial',
 	'cgNotify',
-	'userControllers',
+	'AuthControllers',
 	'toolbarControllers',
+	'HomeController',
 	'EditProfileController',
-	'newsFeedControllers'
+	'newsFeedControllers',
+	'logoutControllerModule'
 ]);
 
 socialNetworkApp.constant('BASE_SERVICE_URL', 'http://softuni-social-network.azurewebsites.net/api');
 
 socialNetworkApp.config(['$routeProvider', function ($routeProvider) {
 	$routeProvider.when('/', {
-		templateUrl: 'templates/welcome-screen.html',
-		controller: 'userController'
+		template: '',
+		controller: 'homeController'
 	})
-	.when('/settings', {
-		templateUrl:'templates/settings.html',
-		controller: "editProfileController"
+	.when('/auth', {
+		templateUrl: 'templates/auth.html',
+		controller: 'authController'
 	})
 	.when('/home', {
 		templateUrl: 'templates/news-feed.html',
-		controller: "newsFeedController"
+		controller: 'newsFeedController'
+	})
+	.when('/settings', {
+		templateUrl:'templates/settings.html',
+		controller: 'editProfileController'
+	})
+	.when('/logout', {
+		template: ' ',
+		controller: 'logoutController'
 	})
 }]);
 

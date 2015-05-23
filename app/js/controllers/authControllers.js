@@ -1,6 +1,6 @@
-var userControllers = angular.module('userControllers', []);
+var AuthControllers = angular.module('AuthControllers', []);
 
-userControllers.controller('userController', ['$scope', '$http', '$location', 'authentication', 'notify',
+AuthControllers.controller('authController', ['$scope', '$http', '$location', 'authentication', 'notify',
 	function ($scope, $http, $location, authentication, notify) {
 		$scope.isLogged = false;
 
@@ -117,7 +117,7 @@ userControllers.controller('userController', ['$scope', '$http', '$location', 'a
 					});
 
 					authentication.setCredentials(data);
-					console.log("Is Logged");
+					console.log(data);
 					$scope.isLogged = true;
 					$location.path('/home');
 					clearAllLoginFields();
