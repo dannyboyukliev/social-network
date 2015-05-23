@@ -1,48 +1,41 @@
 var EditProfileController = angular.module('EditProfileController', []);
 
-EditProfileController.controller('editProfileController', ['$scope',
-	function ($scope, $location) {
-        $scope.profileImage = false;
-
-		$scope.uploadNewProfilePicture = function (newProfilePicture) {
-        	var file = newProfilePicture.files[0];
-        	var MAX_FILE_SIZE = 11128000; // bytes
-        	if (file.size <= MAX_FILE_SIZE) {
-        		console.log("Image size is OK");
-        		var reader = new FileReader();
-        		reader.onload = function () {
-                    $scope.profileImageData = reader.result;
-                    $scope.profileImage = true;
-        		};
-        		reader.readAsDataURL(file);
-        	} else {
-        		// TODO: size too big
-        	}
+EditProfileController.controller('editProfileController', ['$scope', '$location', 'social', 'notify',
+	function ($scope, $location, social, notify) {
+        $scope.user = {
+            email: '',
+            name: '',
+            username: ''
         }
 
-        $scope.clickUploadNewProfilePicture = function () {
-        	$("#select-profile-image").click();
+        var getUserData = function () {
+            social.getUser()
+                .then(function (resultData) {
+                    $scope.user.email = resultData.data.email;
+                    $scope.user.name = resultData.data.name;
+                    $scope.user.username = resultData.data.username;
+                }, function (error) {
+                    notify({ 
+                        message: 'Error witch fetching the data: ' + error.data['message'],
+                        classes: 'alert-danger'
+                    });
+                });
         }
 
-        $scope.uploadBackgroundImage = function (newCoverImage) {
-        	var file = newCoverImage.files[0];
-            var MAX_FILE_SIZE = 1024000;
-            if (file.size <= MAX_FILE_SIZE) {
-                var reader = new FileReader();
-                reader.onload = function () {
-                    $('#other-info .caption').text(file.name);
-                    $('.background-image img').attr('src', reader.result);
-                    $('.background-image img').attr('ng-src', reader.result);
-                    $scope.coverImageData = reader.result;
-                };
-                reader.readAsDataURL(file);
-            } else {
-                Notifications.error("Size limit: 1024kb");
-            }
-        }
+        getUserData();
 
-        var clickUploadBackgroundImage = function () {
-            $("#select-bg-image").click();
-        };
+        $scope.saveChanges = function () {
+            social.editProfile($scope.user)
+                .then(function (resultData) {
+                    notify({
+                        message: 'Profile edited successfully.'
+                    });
+                }, function (error) {
+                    notify({
+                        message: 'Error editing profile: ' + error.data['message'],
+                        classes: 'alert-danger'
+                    })
+                });
+        }
 	}
 ]);

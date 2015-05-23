@@ -27,6 +27,7 @@
     <script src="js/controllers/editProfileController.js"></script>
     <script src="js/controllers/newsFeedControllers.js"></script>
     <script src="js/controllers/logoutController.js"></script>
+    <script src="js/controllers/searchDialogController.js"></script>
 </head>
 <body ng-app="socialNetworkApp">
     <div layout="column">
@@ -39,18 +40,25 @@
         		</div>
         	</span>
 
-        	<span>
+        	<span layout="row">
             	<md-button class="md-icon-button" aria-label="Home" ng-click="go('/')"><md-icon md-svg-icon="img/home.svg"></md-icon></md-button>
             	<md-button class="md-icon-button" aria-label="Friends" ng-click="go('friends/')"><md-icon md-svg-icon="img/toolbar-icons/friends-list.svg"></md-icon></md-button>
+                <md-button class="md-icon-button" aria-label="Search" ng-click="showAlert($event)"><md-icon md-svg-icon="img/toolbar-icons/search.svg"></md-icon></md-button>
             	<md-button class="md-icon-button" aria-label="Settings" ng-click="go('settings/')"><md-icon md-svg-icon="img/toolbar-icons/settings.svg"></md-icon></md-button>
             	<md-button class="md-icon-button" aria-label="Change password" ng-click="go('changePass/')"><md-icon md-svg-icon="img/toolbar-icons/key.svg"></md-icon></md-button>
             	<md-button class="md-icon-button" aria-label="Logout" ng-click="go('logout/')"><md-icon md-svg-icon="img/toolbar-icons/logout.svg"></md-icon></md-button>
+                
             </span>
         </md-toolbar>
 
     	<md-content>
+            <b layout="row" layout-align="center center" layout-margin>
+                 {{alert}}
+            </b>
     		<div ng-view></div>
     	</md-content>
+
+        
     </div>
 </body>
 </html>

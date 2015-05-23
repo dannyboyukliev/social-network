@@ -8,7 +8,8 @@ var socialNetworkApp = angular.module('socialNetworkApp', [
 	'HomeController',
 	'EditProfileController',
 	'newsFeedControllers',
-	'logoutControllerModule'
+	'logoutControllerModule',
+	'SearchDialogController'
 ]);
 
 socialNetworkApp.constant('BASE_SERVICE_URL', 'http://softuni-social-network.azurewebsites.net/api');
@@ -27,7 +28,7 @@ socialNetworkApp.config(['$routeProvider', function ($routeProvider) {
 		controller: 'newsFeedController'
 	})
 	.when('/settings', {
-		templateUrl:'templates/settings.html',
+		templateUrl:'templates/edit-profile.html',
 		controller: 'editProfileController'
 	})
 	.when('/logout', {

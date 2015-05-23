@@ -1,0 +1,31 @@
+<div class="container col-xs-11" ng-cloak="">
+
+    <div class="col-md-7">
+        <div class="well bs-component">
+            <form class="form-horizontal">
+                <fieldset>
+                    <md-input-container>
+                        <label for="username" class="col-lg-2 control-label">Username</label>
+                        <input type="text" ng-model="user.username">
+                    </md-input-container>
+
+                    <md-input-container>
+                        <label for="username" class="col-lg-2 control-label">Name</label>
+                        <input type="text" ng-model="user.name">
+                    </md-input-container>
+
+                    <md-input-container>
+                        <label for="username" class="col-lg-2 control-label">Email</label>
+                        <input type="text" ng-model="user.email">
+                    </md-input-container>
+
+                    <div class="form-group">
+                        <div class="col-lg-10 col-lg-offset-8">
+                            <md-button class="md-raised md-primary md-button md-default-theme" ng-click="saveChanges()" ng-transclude>Save changes</md-button>
+                        </div>
+                    </div>
+                </fieldset>
+            </form>
+        </div>
+    </div>
+</div>

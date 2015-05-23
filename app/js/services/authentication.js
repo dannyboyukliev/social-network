@@ -4,7 +4,6 @@ socialNetworkApp.factory('authentication', function ($http, BASE_SERVICE_URL) {
 	service.login = function (loginData, success, error) {
 		$http.post(BASE_SERVICE_URL + '/users/login', loginData)
 			.success(function (data, status, headers, config) {
-                console.log(data);
 				success(data);
 			}).error(error);
 	};
@@ -45,7 +44,7 @@ socialNetworkApp.factory('authentication', function ($http, BASE_SERVICE_URL) {
 
     service.setCredentials = function (serverData) {
         localStorage['accessToken'] = serverData.access_token;
-        localStorage['username'] = serverData.username;
+        localStorage['username'] = serverData.userName;
         localStorage['isAdmin'] = serverData.isAdmin ? serverData.isAdmin : false;
     };
 

@@ -117,7 +117,6 @@ AuthControllers.controller('authController', ['$scope', '$http', '$location', 'a
 					});
 
 					authentication.setCredentials(data);
-					console.log(data);
 					$scope.isLogged = true;
 					$location.path('/home');
 					clearAllLoginFields();

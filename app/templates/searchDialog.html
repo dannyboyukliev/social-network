@@ -1,0 +1,22 @@
+<md-dialog aria-label="Mango (Fruit)">
+  <form>
+  <md-dialog-content class="sticky-container">
+    <md-subheader class="md-sticky-no-effect">Search for a user</md-subheader>
+    <div>
+        <md-input-container>
+            <label for="search" class="col-lg-2 control-label">Search</label>
+            <input type="search" ng-model="searchedText">
+        </md-input-container>
+    </div>
+  </md-dialog-content>
+  <div class="md-actions" layout="row">
+    <md-button href="http://en.wikipedia.org/wiki/Mango" target="_blank" hide show-md>
+      More on Wikipedia
+    </md-button>
+    <span flex></span>
+    <md-button class="md-primary" aria-label="Search" ng-click="executeSearch()">Search<md-icon md-svg-icon="img/toolbar-icons/search.svg" style="color:black;"></md-icon></md-button>
+  </div>
+  <span flex></span>
+  <md-list-item ng-repeat="result in searchResults"><p>{{result.name}} ({{result.username}})</p></md-list-item>
+  </form>
+</md-dialog>
